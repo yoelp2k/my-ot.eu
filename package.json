@@ -1,0 +1,11 @@
+{
+  "name": "my-ot",
+  "private": true,
+  "description": "Bilingual occupational therapy practice website",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
