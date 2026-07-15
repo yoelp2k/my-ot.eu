@@ -15,7 +15,7 @@
   "hero": {
     "eyebrow": "Online CogFun therapy for adults",
     "title": "CogFun therapy for adults with ADHD",
-    "byline": "Maly Pinhas | Occupational Therapist | Online Therapy",
+    "byline": "Maly Pinhas, M.Sc. | Occupational Therapist | Online Therapy",
     "intro": "Emotional and functional support, with practical tools for adults with ADHD.",
     "contact": "Check whether this is right for you",
     "whatsapp": "Message on WhatsApp"
@@ -43,7 +43,32 @@
     ],
     "goalLead": "My aim is not only to understand the difficulties, but to",
     "goalEmphasis": "translate them into practical tools that can improve both your daily functioning and your personal experience",
-    "goalClosing": "—at your pace and in a way that feels right for you.",
+    "goalClosing": "We work at your pace, in a way that feels right for you.",
+    "qualifications": {
+      "title": "Selected qualifications and training",
+      "items": [
+        {
+          "mark": "M.Sc.",
+          "title": "Occupational Therapy",
+          "detail": "The Hebrew University of Jerusalem"
+        },
+        {
+          "mark": "B.O.T.",
+          "title": "Occupational Therapy",
+          "detail": "University of Haifa"
+        },
+        {
+          "mark": "CogFun",
+          "title": "Cognitive-functional approach",
+          "detail": "Supporting adults with ADHD"
+        },
+        {
+          "mark": "CBT",
+          "title": "Two-year training programme",
+          "detail": "Bar-Ilan University, currently in progress"
+        }
+      ]
+    },
     "linkedin": "View my professional profile on LinkedIn"
   },
   "treatment": {

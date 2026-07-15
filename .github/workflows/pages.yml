@@ -50,7 +50,7 @@ jobs:
       - name: Prepare site artifact
         run: |
           mkdir _site
-          cp index.html style.css maly-portrait.webp _site/
+          cp index.html style.css maly-portrait.webp linkedin-in.png _site/
           mkdir _site/he
           cp he/index.html _site/he/
           touch _site/.nojekyll

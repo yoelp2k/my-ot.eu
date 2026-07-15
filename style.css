@@ -101,7 +101,7 @@ h1 { max-width: 14ch; font-size: clamp(2.6rem, 5.6vw, 4.8rem); font-weight: 760;
 .portrait-area { position: relative; width: min(100%, 430px); margin: 0 auto; }
 .portrait-area::before { content: ""; position: absolute; inset: 7% -8% -5% 9%; z-index: -1; background: var(--sage); border-radius: 48% 52% 46% 54% / 42% 45% 55% 58%; }
 .portrait { width: 100%; height: auto; border: .55rem solid var(--surface); border-radius: 14rem 14rem 1.2rem 1.2rem; box-shadow: var(--shadow); }
-.portrait-area figcaption { position: absolute; inset-inline-end: -1.25rem; inset-block-end: 2rem; max-width: 13rem; padding: .85rem 1rem; color: var(--blue-dark); background: var(--surface); border: 1px solid var(--line); border-radius: .8rem; box-shadow: 0 10px 30px rgba(37, 53, 58, .12); font-size: .86rem; font-weight: 750; line-height: 1.35; }
+.portrait-area figcaption { position: absolute; inset-inline-end: -1.25rem; inset-block-end: 2rem; width: max-content; max-width: min(15rem, calc(100% - 1rem)); padding: .85rem 1rem; color: var(--blue-dark); background: var(--surface); border: 1px solid var(--line); border-radius: .8rem; box-shadow: 0 10px 30px rgba(37, 53, 58, .12); font-size: .82rem; font-weight: 750; line-height: 1.35; white-space: nowrap; }
 
 .challenge { padding-block: clamp(4rem, 8vw, 7rem); text-align: center; background: var(--surface); border-block: 1px solid var(--line); }
 .challenge h2, .center-heading h2, .section-heading h2, .contact-section h2 { font-size: clamp(2rem, 4.2vw, 3.35rem); }
@@ -117,7 +117,17 @@ h1 { max-width: 14ch; font-size: clamp(2.6rem, 5.6vw, 4.8rem); font-weight: 760;
 .section-copy > p { margin: 0 0 1.2rem; color: #45585e; font-size: clamp(1rem, 1.35vw, 1.08rem); }
 .statement { margin-block-start: 2rem !important; padding: 1.4rem 1.5rem; background: var(--surface); border-inline-start: .28rem solid var(--blue); border-radius: .5rem; box-shadow: 0 8px 26px rgba(37, 53, 58, .06); }
 .statement strong { color: var(--ink); }
-.linkedin-link { display: inline-block; margin-block-start: .4rem; }
+.qualifications { margin-block: 2rem; padding-block: 1.5rem; border-block: 1px solid var(--line); }
+.qualifications h3 { margin-block-end: 1.25rem; font-size: 1rem; }
+.qualification-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 1.5rem; margin: 0; padding: 0; list-style: none; }
+.qualification-grid li { display: flex; align-items: flex-start; gap: .75rem; min-width: 0; }
+.credential-mark { display: inline-flex; flex: 0 0 3.75rem; justify-content: center; padding: .32rem .45rem; color: var(--blue-dark); background: var(--blue-soft); border-radius: .35rem; font-size: .72rem; font-weight: 800; line-height: 1.35; }
+.qualification-grid li > span:last-child { min-width: 0; }
+.qualification-grid strong, .qualification-grid small { display: block; }
+.qualification-grid strong { font-size: .88rem; line-height: 1.4; }
+.qualification-grid small { margin-block-start: .15rem; color: var(--muted); font-size: .76rem; line-height: 1.4; }
+.linkedin-link { display: inline-flex; align-items: center; gap: .55rem; margin-block-start: .4rem; }
+.linkedin-link img { width: 1.2rem; height: auto; }
 
 .treatment { background: #eaf1ee; border-block: 1px solid #d6e2dc; }
 .center-heading { max-width: 760px; margin: 0 auto clamp(2.5rem, 5vw, 4rem); text-align: center; }
@@ -176,6 +186,7 @@ h3 { font-size: clamp(1.22rem, 2.1vw, 1.55rem); }
     .profile, .detail-grid, .contact-inner { grid-template-columns: 1fr; }
     .profile { gap: 2rem; }
     .section-heading { position: static; }
+    .qualification-grid { grid-template-columns: 1fr; }
     .goals-panel { grid-template-columns: 1fr; }
     .goals-panel > p { grid-column: 1; }
     .values-grid { grid-template-columns: 1fr; }

@@ -59,8 +59,9 @@ test('locale pages remain structurally equivalent and accessible', () => {
   for (const html of [englishPage, hebrewPage]) {
     const ids = idsIn(html);
     assert.equal(new Set(ids).size, ids.length);
-    assert.equal((html.match(/<img\b/g) || []).length, 1);
+    assert.equal((html.match(/<img\b/g) || []).length, 2);
     assert.match(html, /maly-portrait\.webp/);
+    assert.match(html, /linkedin-in\.png/);
     assert.match(html, /<main id="main-content">/);
     assert.match(html, /href="#main-content"/);
     assert.match(html, /rel="canonical" href="https:\/\/www\.my-ot\.eu/);
@@ -76,11 +77,15 @@ test('contact details and professional profile are current in both languages', (
     assert.match(html, /https:\/\/www\.linkedin\.com\/in\/malypinhas\//);
     assert.doesNotMatch(html, /18\+/);
     assert.doesNotMatch(html, /17\+/);
+    assert.doesNotMatch(html, /—/);
     assert.doesNotMatch(html, /maly@my-ot\.eu/);
   }
 
   assert.match(englishPage, /Over 18 years of clinical experience/);
   assert.match(hebrewPage, /למעלה מ־18 שנות ניסיון קליני/);
+  assert.match(englishPage, /Maly Pinhas, M\.Sc\./);
+  assert.match(hebrewPage, /מלי פנחס, <bdi>M\.Sc\.<\/bdi>/);
+  assert.equal(fs.existsSync(path.join(root, 'linkedin-in.png')), true);
 });
 
 test('the site remains privacy-first and dependency-free', () => {
@@ -107,5 +112,6 @@ test('deployment targets GitHub Pages and runs tests first', () => {
   assert.match(workflow, /actions\/upload-pages-artifact@v4/);
   assert.match(workflow, /actions\/deploy-pages@v4/);
   assert.match(workflow, /needs: test/);
+  assert.match(workflow, /linkedin-in\.png/);
   assert.doesNotMatch(workflow, /azure/i);
 });
