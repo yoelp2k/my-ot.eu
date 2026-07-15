@@ -17,10 +17,11 @@
     "title": "CogFun therapy for adults with ADHD",
     "byline": "Maly Pinhas, M.Sc. | Occupational Therapist | Online Therapy",
     "intro": "Emotional and functional support, with practical tools for adults with ADHD.",
-    "contact": "Check whether this is right for you",
+    "contact": "Who this treatment is for",
     "whatsapp": "Message on WhatsApp"
   },
   "challenge": {
+    "label": "Who this treatment is for",
     "title": "When ability and everyday life do not quite meet",
     "paragraphs": [
       "Adults with ADHD often experience a frustrating gap between what they know they can do and what actually happens day to day.",
@@ -100,8 +101,8 @@
   },
   "contact": {
     "label": "Get in touch",
-    "title": "Would you like to explore whether this approach fits you?",
-    "intro": "If you would like to check whether the treatment is suitable or simply hear more, you are warmly invited to contact me.",
+    "title": "Questions or interested in hearing more?",
+    "intro": "You are warmly invited to contact me by email or WhatsApp.",
     "emailLabel": "Email",
     "email": "maly.pinhas@gmail.com",
     "whatsappLabel": "WhatsApp",
@@ -109,6 +110,7 @@
     "whatsappUrl": "https://wa.me/972507870635"
   },
   "footer": {
+    "linkedin": "LinkedIn",
     "privacy": "A privacy-first static site: no cookies or tracking."
   }
 }

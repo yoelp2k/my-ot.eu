@@ -53,13 +53,21 @@ test('language navigation uses stable locale URLs and marks the current page', (
   assert.equal((hebrewPage.match(/aria-current="page"/g) || []).length, 1);
 });
 
+test('every in-page link has a real destination', () => {
+  for (const html of [englishPage, hebrewPage]) {
+    const ids = new Set(idsIn(html));
+    const fragments = [...html.matchAll(/href="#([^"]+)"/g)].map((match) => match[1]);
+    for (const fragment of fragments) assert.equal(ids.has(fragment), true, `Missing #${fragment}`);
+  }
+});
+
 test('locale pages remain structurally equivalent and accessible', () => {
   assert.deepEqual(idsIn(englishPage), idsIn(hebrewPage));
 
   for (const html of [englishPage, hebrewPage]) {
     const ids = idsIn(html);
     assert.equal(new Set(ids).size, ids.length);
-    assert.equal((html.match(/<img\b/g) || []).length, 3);
+    assert.equal((html.match(/<img\b/g) || []).length, 5);
     assert.match(html, /maly-portrait\.webp/);
     assert.match(html, /linkedin-in\.png/);
     assert.match(html, /whatsapp-mark\.png/);
@@ -89,6 +97,18 @@ test('contact details and professional profile are current in both languages', (
   assert.match(hebrewPage, /מלי פנחס, <bdi>M\.Sc\.<\/bdi>/);
   assert.equal(fs.existsSync(path.join(root, 'linkedin-in.png')), true);
   assert.equal(fs.existsSync(path.join(root, 'whatsapp-mark.png')), true);
+});
+
+test('calls to action match their destinations', () => {
+  assert.match(englishPage, /<a class="button" href="#fit">Who this treatment is for<\/a>/);
+  assert.match(hebrewPage, /<a class="button" href="#fit">למי הטיפול מתאים<\/a>/);
+
+  for (const html of [englishPage, hebrewPage]) {
+    assert.match(html, /<section class="challenge" id="fit"/);
+    assert.match(html, /class="contact-whatsapp" href="https:\/\/wa\.me\/972507870635"><img[^>]+whatsapp-mark\.png/);
+    assert.match(html, /class="footer-linkedin" href="https:\/\/www\.linkedin\.com\/in\/malypinhas\/"[^>]*><img[^>]+linkedin-in\.png/);
+    assert.doesNotMatch(html, /href="#contact">(?:Check whether this is right for you|לבדיקת התאמה)<\/a>/);
+  }
 });
 
 test('the site remains privacy-first and dependency-free', () => {

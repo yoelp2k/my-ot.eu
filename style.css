@@ -124,6 +124,7 @@ h1 { max-width: 14ch; font-size: clamp(2.6rem, 5.6vw, 4.8rem); font-weight: 760;
 }
 
 .challenge { padding-block: clamp(4rem, 8vw, 7rem); text-align: center; background: var(--surface); border-block: 1px solid var(--line); }
+.challenge .eyebrow { margin-block-end: .75rem; }
 .challenge h2, .center-heading h2, .section-heading h2, .contact-section h2 { font-size: clamp(2rem, 4.2vw, 3.35rem); }
 .challenge h2 { margin-block-end: 1.5rem; }
 .challenge p { margin: .65rem 0; color: var(--muted); font-size: 1.04rem; }
@@ -174,15 +175,19 @@ h3 { font-size: clamp(1.22rem, 2.1vw, 1.55rem); }
 .contact-section .eyebrow { color: #8bc6d8; }
 .contact-section p:last-child { max-width: 42rem; color: #cbd5d7; }
 .contact-links { display: grid; gap: .8rem; }
-.contact-links a { display: grid; padding: 1rem 1.2rem; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: .75rem; text-decoration: none; transition: background 160ms ease; }
+.contact-links a { position: relative; display: grid; padding: 1rem 1.2rem; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: .75rem; text-decoration: none; transition: background 160ms ease; }
 .contact-links a:hover { background: rgba(255,255,255,.14); }
 .contact-links span { color: #9fbdc5; font-size: .74rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
 .contact-links strong { color: white; overflow-wrap: anywhere; }
+.contact-links .contact-whatsapp { padding-inline-end: 3.5rem; }
+.contact-whatsapp img { position: absolute; inset-inline-end: 1.15rem; inset-block-start: 50%; width: 1.35rem; height: 1.35rem; transform: translateY(-50%); }
 
 .site-footer { padding-block: 1.6rem; color: var(--muted); background: var(--surface); border-top: 1px solid var(--line); font-size: .8rem; }
 .site-footer p { margin: 0; }
 .site-footer div div { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem; }
 .site-footer a { color: var(--blue-dark); font-weight: 750; text-underline-offset: .2em; }
+.footer-linkedin { display: inline-flex; align-items: center; gap: .35rem; }
+.footer-linkedin img { width: .9rem; height: auto; }
 
 @media (max-width: 860px) {
     .section-nav { display: none; }
