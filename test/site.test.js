@@ -74,11 +74,12 @@ test('contact details and professional profile are current in both languages', (
     assert.match(html, /mailto:maly\.pinhas@gmail\.com/);
     assert.match(html, /https:\/\/wa\.me\/972507870635/);
     assert.match(html, /https:\/\/www\.linkedin\.com\/in\/malypinhas\//);
+    assert.doesNotMatch(html, /18\+/);
     assert.doesNotMatch(html, /17\+/);
     assert.doesNotMatch(html, /maly@my-ot\.eu/);
   }
 
-  assert.match(englishPage, /18\+/);
+  assert.match(englishPage, /Over 18 years of clinical experience/);
   assert.match(hebrewPage, /למעלה מ־18 שנות ניסיון קליני/);
 });
 
