@@ -1,9 +1,89 @@
 {
-    "title": "Maly Pinhas - Occupational Therapist",
-    "heading": "Welcome to the Practice of Maly Pinhas",
-    "subheading": "Expert Occupational Therapist with Over 17 Years of Experience",
-    "description": "I am Maly Pinhas, a passionate occupational therapist with over 17 years of diverse experience. I hold a master's degree in occupational therapy and have worked extensively across different settings. My experience includes leading a team of therapists at a local institute and running my own clinic where I focused on parent counseling, group sessions, and personalized one-on-one sessions. Currently, my practice primarily supports adults with ADHD through the cognitive-functional (CogFun) approach, which focuses on practical, tailored strategies to improve daily functioning and overall well-being. I am committed to providing compassionate and effective care, helping individuals navigate their unique challenges. If you need support, please don't hesitate to contact me.",
-    "contact": "Contact me",
-    "more": "More Info About Me",
-    "email": "maly@my-ot.eu"
+  "meta": {
+    "title": "Online CogFun Therapy for Adults with ADHD | Maly Pinhas",
+    "description": "Online CogFun occupational therapy with Maly Pinhas for adults with ADHD, combining emotional support with practical strategies for everyday life."
+  },
+  "brand": {
+    "name": "Maly Pinhas",
+    "profession": "Occupational Therapist"
+  },
+  "navigation": {
+    "about": "About",
+    "treatment": "The treatment",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Online CogFun therapy for adults",
+    "title": "CogFun therapy for adults with ADHD",
+    "byline": "Maly Pinhas | Occupational Therapist | Online Therapy",
+    "intro": "Emotional and functional support, with practical tools for adults with ADHD.",
+    "contact": "Check whether this is right for you",
+    "whatsapp": "Message on WhatsApp"
+  },
+  "challenge": {
+    "title": "When ability and everyday life do not quite meet",
+    "paragraphs": [
+      "Adults with ADHD often experience a frustrating gap between what they know they can do and what actually happens day to day.",
+      "Difficulties with organisation, procrastination, emotional overload and feeling stuck can affect people who are already doing their very best."
+    ],
+    "lead": "Therapy creates space to understand your individual patterns of attention,",
+    "emphasis": [
+      "learn to manage ADHD",
+      "rather than letting it manage you,"
+    ],
+    "closing": "and build emotional and practical tools designed for real life."
+  },
+  "about": {
+    "label": "About me",
+    "title": "Professional knowledge, applied with care",
+    "paragraphs": [
+      "My name is Maly Pinhas. I am an occupational therapist with broad clinical experience across a range of populations, and I now specialise in supporting adults with ADHD.",
+      "I work with the cognitive-functional CogFun approach, combining emotional work with the development of practical strategies for everyday life.",
+      "I hold a bachelor’s degree in Occupational Therapy from the University of Haifa and a master’s degree from the Hebrew University of Jerusalem, with over 18 years of clinical experience."
+    ],
+    "goalLead": "My aim is not only to understand the difficulties, but to",
+    "goalEmphasis": "translate them into practical tools that can improve both your daily functioning and your personal experience",
+    "goalClosing": "—at your pace and in a way that feels right for you.",
+    "linkedin": "View my professional profile on LinkedIn"
+  },
+  "treatment": {
+    "label": "How treatment works",
+    "title": "Flexible online sessions with meaningful depth",
+    "intro": "Therapy takes place online, offering flexibility alongside focused, in-depth therapeutic work.",
+    "durationTitle": "A process shaped around you",
+    "duration": "The length of treatment is tailored to your needs and goals. It commonly lasts around six months, with the option to continue when helpful.",
+    "meetingTitle": "A consistent weekly meeting",
+    "meeting": "Sessions take place once a week at a regular time. You will need a quiet space and a stable internet connection so you can focus and get the most from each meeting.",
+    "goalsTitle": "During therapy, we can work together to",
+    "goals": [
+      "Recognise your individual patterns of attention and functioning",
+      "Develop practical tools for time management, organisation and motivation",
+      "Understand executive functions and how they affect everyday life",
+      "Work on emotional regulation, self-image and reducing overload"
+    ],
+    "closing": "The work is collaborative, paced to suit you and connected to the realities of your daily life."
+  },
+  "values": {
+    "label": "What matters to me in therapy",
+    "title": "A respectful space for practical change",
+    "items": [
+      "Personal, attentive and compassionate care",
+      "A broad view of the person and the meaningful roles in their life",
+      "Tools that can genuinely be used in everyday situations",
+      "An approachable, non-judgemental relationship"
+    ]
+  },
+  "contact": {
+    "label": "Get in touch",
+    "title": "Would you like to explore whether this approach fits you?",
+    "intro": "If you would like to check whether the treatment is suitable or simply hear more, you are warmly invited to contact me.",
+    "emailLabel": "Email",
+    "email": "maly.pinhas@gmail.com",
+    "whatsappLabel": "WhatsApp",
+    "whatsapp": "Send a message",
+    "whatsappUrl": "https://wa.me/972507870635"
+  },
+  "footer": {
+    "privacy": "A privacy-first static site: no cookies or tracking."
+  }
 }

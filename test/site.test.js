@@ -15,22 +15,35 @@ function idsIn(html) {
   return [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 }
 
-function assertUniqueIds(html) {
-  const ids = idsIn(html);
-  assert.equal(new Set(ids).size, ids.length);
+function flattenStrings(value) {
+  if (typeof value === 'string') return [value];
+  if (Array.isArray(value)) return value.flatMap(flattenStrings);
+  if (value && typeof value === 'object') return Object.values(value).flatMap(flattenStrings);
+  return [];
 }
 
-function assertCoreTranslationIsRendered(html, translation) {
-  for (const key of ['title', 'heading', 'subheading', 'description', 'contact', 'email']) {
-    assert.ok(html.includes(translation[key]), `Missing translated ${key}`);
+function renderedText(html) {
+  return html
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<\/?(?:bdi|strong|span)\b[^>]*>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function assertContentIsRendered(html, content) {
+  const text = renderedText(html);
+  for (const value of flattenStrings(content)) {
+    const normalized = value.replace(/\s+/g, ' ').trim();
+    assert.ok(text.includes(normalized) || html.includes(value), `Missing content: ${value}`);
   }
 }
 
-test('both languages are complete static pages', () => {
+test('both locales render their complete structured content', () => {
   assert.match(englishPage, /<html lang="en" dir="ltr">/);
   assert.match(hebrewPage, /<html lang="he" dir="rtl">/);
-  assertCoreTranslationIsRendered(englishPage, english);
-  assertCoreTranslationIsRendered(hebrewPage, hebrew);
+  assertContentIsRendered(englishPage, english);
+  assertContentIsRendered(hebrewPage, hebrew);
 });
 
 test('language navigation uses stable locale URLs and marks the current page', () => {
@@ -40,27 +53,52 @@ test('language navigation uses stable locale URLs and marks the current page', (
   assert.equal((hebrewPage.match(/aria-current="page"/g) || []).length, 1);
 });
 
-test('pages have valid structural invariants', () => {
+test('locale pages remain structurally equivalent and accessible', () => {
+  assert.deepEqual(idsIn(englishPage), idsIn(hebrewPage));
+
   for (const html of [englishPage, hebrewPage]) {
-    assertUniqueIds(html);
+    const ids = idsIn(html);
+    assert.equal(new Set(ids).size, ids.length);
     assert.equal((html.match(/<img\b/g) || []).length, 1);
     assert.match(html, /maly-portrait\.webp/);
-    assert.doesNotMatch(html, /<script\b/i);
-    assert.doesNotMatch(html, /<script[^>]+src="https?:/i);
-    assert.doesNotMatch(html, /<link[^>]+rel="stylesheet"[^>]+href="https?:/i);
-    assert.match(html, /rel="canonical"/);
+    assert.match(html, /<main id="main-content">/);
+    assert.match(html, /href="#main-content"/);
+    assert.match(html, /rel="canonical" href="https:\/\/www\.my-ot\.eu/);
     assert.match(html, /hreflang="en"/);
     assert.match(html, /hreflang="he"/);
+  }
+});
+
+test('contact details and professional profile are current in both languages', () => {
+  for (const html of [englishPage, hebrewPage]) {
+    assert.match(html, /mailto:maly\.pinhas@gmail\.com/);
+    assert.match(html, /https:\/\/wa\.me\/972507870635/);
+    assert.match(html, /https:\/\/www\.linkedin\.com\/in\/malypinhas\//);
+    assert.doesNotMatch(html, /17\+/);
+    assert.doesNotMatch(html, /maly@my-ot\.eu/);
+  }
+
+  assert.match(englishPage, /18\+/);
+  assert.match(hebrewPage, /למעלה מ־18 שנות ניסיון קליני/);
+});
+
+test('the site remains privacy-first and dependency-free', () => {
+  for (const html of [englishPage, hebrewPage]) {
+    assert.doesNotMatch(html, /<script\b/i);
+    assert.doesNotMatch(html, /document\.cookie|analytics\.js|gtag\(|facebook\.net/i);
+    assert.doesNotMatch(html, /<link[^>]+rel="stylesheet"[^>]+href="https?:/i);
+    assert.doesNotMatch(html, /<iframe\b/i);
   }
 
   assert.equal(fs.existsSync(path.join(root, 'maly-portrait.jpg')), false);
   assert.equal(fs.existsSync(path.join(root, 'maly-portrait.webp')), true);
 });
 
-test('the design includes responsive and reduced-motion styles', () => {
-  assert.match(stylesheet, /@media \(max-width: 760px\)/);
+test('the design is responsive and respects reduced motion', () => {
+  assert.match(stylesheet, /@media \(max-width: 680px\)/);
   assert.match(stylesheet, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(stylesheet, /:focus-visible/);
+  assert.match(stylesheet, /\.portrait\s*\{[^}]*height:\s*auto/s);
 });
 
 test('deployment targets GitHub Pages and runs tests first', () => {
@@ -69,6 +107,4 @@ test('deployment targets GitHub Pages and runs tests first', () => {
   assert.match(workflow, /actions\/deploy-pages@v4/);
   assert.match(workflow, /needs: test/);
   assert.doesNotMatch(workflow, /azure/i);
-  assert.equal(fs.existsSync(path.join(root, '.github', 'workflows', 'increment-version.yml')), false);
-  assert.equal(fs.existsSync(path.join(root, '.github', 'workflows', 'azure-static-web-apps-calm-glacier-064dd4503.yml')), false);
 });
