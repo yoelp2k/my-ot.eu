@@ -105,6 +105,8 @@ test('the design is responsive and respects reduced motion', () => {
   assert.match(stylesheet, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(stylesheet, /:focus-visible/);
   assert.match(stylesheet, /\.portrait\s*\{[^}]*height:\s*auto/s);
+  assert.match(stylesheet, /\.portrait-area figcaption\s*\{[^}]*width:\s*max-content[^}]*max-width:\s*none[^}]*white-space:\s*nowrap/s);
+  assert.match(stylesheet, /@media \(max-width: 680px\)[\s\S]*\.portrait-area figcaption\s*\{[^}]*white-space:\s*normal/s);
 });
 
 test('deployment targets GitHub Pages and runs tests first', () => {
