@@ -94,9 +94,13 @@ a:focus-visible { outline: 3px solid #51a9c5; outline-offset: 3px; }
 h1 { max-width: 14ch; font-size: clamp(2.6rem, 5.6vw, 4.8rem); font-weight: 760; }
 .byline { margin: 1.25rem 0 .25rem; color: var(--blue-dark); font-weight: 750; }
 .hero-intro { max-width: 36rem; margin: .35rem 0 2rem; color: var(--muted); font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
-.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem 1.35rem; }
+.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 3.1rem; padding: .75rem 1.3rem; color: white; background: var(--blue-dark); border: 2px solid transparent; border-radius: 2rem; font-weight: 750; line-height: 1.15; text-decoration: none; transition: background 160ms ease, transform 160ms ease; }
 .button:hover { background: #104c62; transform: translateY(-1px); }
+.button-secondary { color: var(--blue-dark); background: var(--surface); border-color: #cbd8d6; }
+.button-secondary:hover { background: #eef4f1; }
+.whatsapp-button { gap: .55rem; }
+.whatsapp-button img { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; }
 .text-link, .linkedin-link { color: var(--blue-dark); font-weight: 720; text-decoration-thickness: 1px; text-underline-offset: .25em; }
 .portrait-area { position: relative; width: min(100%, 430px); margin: 0 auto; }
 .portrait-area::before { content: ""; position: absolute; inset: 7% -8% -5% 9%; z-index: -1; background: var(--sage); border-radius: 48% 52% 46% 54% / 42% 45% 55% 58%; }
@@ -194,7 +198,8 @@ h3 { font-size: clamp(1.22rem, 2.1vw, 1.55rem); }
     .language-switcher a { padding-inline: .58rem; }
     .hero { grid-template-columns: 1fr; gap: 3.5rem; padding-block: 3.5rem 5rem; }
     h1 { max-width: 15ch; font-size: clamp(2.4rem, 11vw, 3.6rem); }
-    .hero-actions { align-items: flex-start; flex-direction: column; }
+    .hero-actions { align-items: stretch; flex-direction: column; width: min(100%, 23rem); }
+    .hero-actions .button { width: 100%; }
     .portrait-area { width: min(90%, 390px); }
     .portrait-area figcaption {
         inset-inline-end: -.25rem;

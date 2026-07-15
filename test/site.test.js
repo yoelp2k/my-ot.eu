@@ -59,9 +59,10 @@ test('locale pages remain structurally equivalent and accessible', () => {
   for (const html of [englishPage, hebrewPage]) {
     const ids = idsIn(html);
     assert.equal(new Set(ids).size, ids.length);
-    assert.equal((html.match(/<img\b/g) || []).length, 2);
+    assert.equal((html.match(/<img\b/g) || []).length, 3);
     assert.match(html, /maly-portrait\.webp/);
     assert.match(html, /linkedin-in\.png/);
+    assert.match(html, /whatsapp-mark\.png/);
     assert.match(html, /<main id="main-content">/);
     assert.match(html, /href="#main-content"/);
     assert.match(html, /rel="canonical" href="https:\/\/www\.my-ot\.eu/);
@@ -74,6 +75,7 @@ test('contact details and professional profile are current in both languages', (
   for (const html of [englishPage, hebrewPage]) {
     assert.match(html, /mailto:maly\.pinhas@gmail\.com/);
     assert.match(html, /https:\/\/wa\.me\/972507870635/);
+    assert.match(html, /class="button button-secondary whatsapp-button" href="https:\/\/wa\.me\/972507870635"/);
     assert.match(html, /https:\/\/www\.linkedin\.com\/in\/malypinhas\//);
     assert.doesNotMatch(html, /18\+/);
     assert.doesNotMatch(html, /17\+/);
@@ -86,6 +88,7 @@ test('contact details and professional profile are current in both languages', (
   assert.match(englishPage, /Maly Pinhas, M\.Sc\./);
   assert.match(hebrewPage, /מלי פנחס, <bdi>M\.Sc\.<\/bdi>/);
   assert.equal(fs.existsSync(path.join(root, 'linkedin-in.png')), true);
+  assert.equal(fs.existsSync(path.join(root, 'whatsapp-mark.png')), true);
 });
 
 test('the site remains privacy-first and dependency-free', () => {
@@ -107,6 +110,8 @@ test('the design is responsive and respects reduced motion', () => {
   assert.match(stylesheet, /\.portrait\s*\{[^}]*height:\s*auto/s);
   assert.match(stylesheet, /\.portrait-area figcaption\s*\{[^}]*width:\s*max-content[^}]*max-width:\s*none[^}]*white-space:\s*nowrap/s);
   assert.match(stylesheet, /@media \(max-width: 680px\)[\s\S]*\.portrait-area figcaption\s*\{[^}]*white-space:\s*normal/s);
+  assert.match(stylesheet, /@media \(max-width: 680px\)[\s\S]*\.hero-actions\s*\{[^}]*align-items:\s*stretch[^}]*width:\s*min\(100%, 23rem\)/s);
+  assert.match(stylesheet, /\.hero-actions \.button\s*\{[^}]*width:\s*100%/s);
 });
 
 test('deployment targets GitHub Pages and runs tests first', () => {
@@ -115,5 +120,6 @@ test('deployment targets GitHub Pages and runs tests first', () => {
   assert.match(workflow, /actions\/deploy-pages@v4/);
   assert.match(workflow, /needs: test/);
   assert.match(workflow, /linkedin-in\.png/);
+  assert.match(workflow, /whatsapp-mark\.png/);
   assert.doesNotMatch(workflow, /azure/i);
 });
