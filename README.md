@@ -1,8 +1,8 @@
-# my-ot.eu
+# Maly Pinhas occupational therapy website
 
 A small bilingual website for Maly Pinhas's occupational therapy practice, available in English and Hebrew.
 
-- Live site: [my-ot.eu](https://my-ot.eu)
+- Live site: [pinhas.co.uk](https://www.pinhas.co.uk)
 - Current GitHub Pages preview: [yoelp2k.github.io/my-ot.eu](https://yoelp2k.github.io/my-ot.eu/)
 
 The site uses plain HTML and CSS. It has no client-side JavaScript, cookies, analytics, external fonts, or runtime dependencies.
@@ -35,6 +35,12 @@ When editing text, update the relevant HTML page and its matching JSON file. Run
 
 Pushes to `main` run the tests and deploy the static files through GitHub Actions. Pull requests run the same tests without publishing.
 
-GitHub Pages must use **GitHub Actions** as its source. Configure `my-ot.eu` under **Settings → Pages → Custom domain**; the workflow does not require a repository `CNAME` file. Enable **Enforce HTTPS** after GitHub's DNS check succeeds.
+GitHub Pages must use **GitHub Actions** as its source. Configure `www.pinhas.co.uk` under **Settings → Pages → Custom domain**; the workflow does not require a repository `CNAME` file. Enable **Enforce HTTPS** after GitHub's DNS check succeeds.
 
-DNS for the apex domain uses GitHub Pages' four `A` records. `www` should be a `CNAME` to `yoelp2k.github.io`. Preserve all Microsoft 365 mail records when editing DNS.
+For `pinhas.co.uk`, the apex uses GitHub Pages' four `A` records and `www` is a `CNAME` to `yoelp2k.github.io`.
+
+## Domain safety
+
+`my-ot.eu` is reserved for Maly's existing Microsoft 365 email service. It is not the website domain. Never change or remove its MX, SPF/verification TXT, or `autodiscover` records as part of a website deployment.
+
+Do not add a repository `CNAME` file. The custom domain is managed in GitHub Pages settings because deployment uses GitHub Actions.
